@@ -14,7 +14,6 @@
     </a>
   </div>
   <h1>Vite + Alessandro</h1>
-  <p>asd</p>
 
   <div class="card">
     <Counter />
