@@ -7,7 +7,9 @@
     "moduleResolution": "bundler",
     "strict": true,
     "noEmit": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": false
   },
   "include": ["vite.config.ts"]
 }
