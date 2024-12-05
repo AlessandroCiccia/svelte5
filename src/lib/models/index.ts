@@ -1,5 +1,5 @@
 /**
- * Common Types
+ * Common Types.
  */
 
 // Interfaccia base per una rendition generica di un asset
