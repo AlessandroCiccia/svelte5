@@ -62,10 +62,6 @@ export type ViewAction =
   | {
       type: "externalUrl";
       url: string;
-    }
-  | {
-      type: "functionalAction";
-      function: () => void;
     };
 
 export type VehicleCodeCategory = {
@@ -1794,10 +1790,10 @@ export const navigation: NavigationHeader = {
         },
         blank: false,
         tagAdobe: "header-close-header",
-        action: {
-          type: "functionalAction",
-          function: () => closeModal(),
-        },
+        // action: {
+        //   type: "functionalAction",
+        //   function: () => closeModal(),
+        // },
       },
     },
     {
@@ -1813,10 +1809,10 @@ export const navigation: NavigationHeader = {
         },
         blank: false,
         tagAdobe: "header-back-header",
-        action: {
-          type: "functionalAction",
-          function: () => backModal("category"),
-        },
+        // action: {
+        //   type: "functionalAction",
+        //   function: () => backModal("category"),
+        // },
       },
     },
     {
@@ -2131,61 +2127,63 @@ export interface Breadcrumb {
 }
 
 export interface PLPHeader {
+  breadcrumbs: Breadcrumb[];
   title: string;
-  locations: VehicleListingFilterSection; // ! arriva da CMS
+
+  // ! arriva da CMS
+  //? locations: VehicleListingFilterSection;
 }
 
 export interface PLP {
-  breadcrumbs: Breadcrumb[];
-  PLPHeader: PLPHeader;
+  header: PLPHeader;
   // ? sortingSection: VehicleListingFilterSection;
-  flags: VehicleListingFlag[];
-  loadMoreLabel: string;
-  disclaimer: string;
+  //? flags: VehicleListingFlag[];
+  //? loadMoreLabel: string;
 }
 
 // PDP
+export interface PDPHeader {
+  breadcrumbs: Breadcrumb[];
+  backCta: Link;
+}
 
 export interface PDP {
-  breadcrumbs: Breadcrumb[];
-  PLPHeader: PLPHeader;
-  // ? sortingSection: VehicleListingFilterSection;
-  flags: VehicleListingFlag[];
-  loadMoreLabel: string;
+  header: PDPHeader;
+  //? flags: VehicleListingFlag[];
 
-  detailSection: {
-    title: string; // Titolo della sezione (es. "New Jeep Savana 4xe Pure Tech")
-    subtitle: string; // Sottotitolo della sezione
-    items: {
-      title: string;
-      description: string;
-      iconName: string;
-      type: string; // per il colore
-    }[];
-    img: AssetImageRendition; // ?
-  };
-  blockSection: {
-    title: string; // Titolo della sezione (es. "Trade-in")
-    subtitle: string; // Sottotitolo della sezione
-    cta: Link[]; // Testo del pulsante "Estimate your vehicle"
-  };
+  //? detailSection: {
+  //?   title: string; // Titolo della sezione (es. "New Jeep Savana 4xe Pure Tech")
+  //?   subtitle: string; // Sottotitolo della sezione
+  //?   items: {
+  //?     title: string;
+  //?     description: string;
+  //?     iconName: string;
+  //?     type: string; // per il colore
+  //?   }[];
+  //?   img: AssetImageRendition; // ?
+  //? };
   contactSection: {
     title: string; // Titolo della sezione (es. "Shipping")
-    description: string; // Sottotitolo della sezione (es. "Contact")
-    //! locationName: string; // Nome della sede (es. "STELLANTIS & YOU PARIS PANTIN")
-    //! address: Link; // Indirizzo della sede (es. "Via Imperatore Federico 79, 90143 Palermo")
-    //? locationStatus: string; // Stato della sede (es. "Open")
-    //! locationHours: {
-    //!	openHour: string; // Orario di apertura della sede (es. "till 19h00")
-    //! 	closeHour: string; // Orario di chiusura della sede (es. "till 19h00")
-    //! 	id: string; // ID del giorno della settimana (es. "monday")
-    //! }[],
+    description: string; // descrizione della sezione (es. "Contact")
     phoneSection: {
-      questionsTitle: string; // Domanda per il contatto (es. "Any questions about this vehicle?")
-      //! contactPhoneLabel: string; // Etichetta per il numero di telefono (es. "Phone number")
+      title: string; // Domanda per il contatto (es. "Any questions about this vehicle?")
       ctas: Link[]; // Testo del pulsante "Call Me Back" o "Get a quote"
     };
   };
-
-  disclaimer: string;
+  excluWeb: {
+    title: string;
+    description: string;
+    subItems: {
+      title: string;
+      description: string;
+    }[];
+  };
+  traidInSection: {
+    title: string; // Titolo della sezione (es. "Trade-in")
+    description: string; // descrizione della sezione
+    cta: Link[]; // Testo del pulsante "Estimate your vehicle"
+  };
+  relatedCars: {
+    title: string;
+  };
 }
