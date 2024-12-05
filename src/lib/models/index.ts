@@ -46,6 +46,7 @@ export interface Link {
 	tagAdobe: string;
 	asset?: AssetImageRendition | AssetVideoRendition;
 	action?: ViewAction;
+	hasDivider: boolean;
 }
 
 export interface MenuLink extends Link {
@@ -2135,5 +2136,54 @@ export interface PLP {
 	// ? sortingSection: VehicleListingFilterSection;
 	flags: VehicleListingFlag[];
 	loadMoreLabel: string; 
+	disclaimer: string;
+}
+
+
+// PDP
+
+export interface PDP {
+	breadcrumbs: Breadcrumb[];
+	PLPHeader: PLPHeader;
+	// ? sortingSection: VehicleListingFilterSection;
+	flags: VehicleListingFlag[];
+	loadMoreLabel: string;
+
+
+
+	detailSection: {
+		title: string; // Titolo della sezione (es. "New Jeep Savana 4xe Pure Tech")
+		subtitle: string; // Sottotitolo della sezione
+		items: {
+			title: string;
+			description: string;
+			iconName: string;
+			type: string; // per il colore
+		}[];
+		img: AssetImageRendition; // ?
+	};
+	blockSection: {
+		title: string; // Titolo della sezione (es. "Trade-in")
+		subtitle: string; // Sottotitolo della sezione
+		cta: Link[]; // Testo del pulsante "Estimate your vehicle"
+	};
+	contactSection: {
+		title: string; // Titolo della sezione (es. "Shipping")
+		subtitle: string; // Sottotitolo della sezione (es. "Contact")
+		locationName: string; // Nome della sede (es. "STELLANTIS & YOU PARIS PANTIN")
+		address: Link; // Indirizzo della sede (es. "Via Imperatore Federico 79, 90143 Palermo")
+		locationStatus: string; // Stato della sede (es. "Open")
+		locationHours: {
+			openHour: string; // Orario di apertura della sede (es. "till 19h00")
+			closeHour: string; // Orario di chiusura della sede (es. "till 19h00")
+			id: string; // ID del giorno della settimana (es. "monday")
+		}[],
+		phoneSection: {
+			questionsTitle: string; // Domanda per il contatto (es. "Any questions about this vehicle?")
+			contactPhoneLabel: string; // Etichetta per il numero di telefono (es. "Phone number")
+			ctas: Link[]; // Testo del pulsante "Call Me Back" o "Get a quote"
+		}
+	}
+
 	disclaimer: string;
 }
