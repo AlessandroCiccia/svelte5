@@ -15,29 +15,26 @@ const config: Config = {
     },
     extend: {
       colors: {
-        border: "hsl(var(--border) / <alpha-value>)",
-        input: "hsl(var(--input) / <alpha-value>)",
-        ring: "hsl(var(--ring) / <alpha-value>)",
-        button: {
-          DEFAULT: "#3F68FF",
-          hover: "#2755FC",
-          "primary-disabled": "#DF353D",
-          "md-sm-disabled": "#243882",
-          "secondary-disabled": "#243882",
-          "md-secondary-disabled": "#EC2D30",
+        primary: {
+          DEFAULT: "#243882", // Esempio colore
+          accent: "#3F68FF",
+          black: "#1E1E1E",
+          white: "#FFFFFF",
+          lightBlue: "#D1E2F1",
+        },
+        secondary: {
+          greyBlue: "#495783",
+          orange: "#FF5731",
+          violet: "#9B76FF",
+          excluweb: "#D62054",
         },
         background: {
           DEFAULT: "#D1E2F1",
-          80: "#D1E2F1CC",
-          70: "#D1E2F1B2",
-          50: "#D1E2F180",
-          30: "#D1E2F14D",
-          20: "#D1E2F133",
         },
-        foreground: "#FFFF",
         neutral: {
-          DEFAULT: "#1F1F1F",
+          700: "#1F1F1F",
           600: "#4B4B4B",
+          550: "#686868",
           500: "#8E8E8E",
           400: "#CACACA",
           300: "#E1E1E1",
@@ -45,81 +42,76 @@ const config: Config = {
           100: "#F5F5F5",
           50: "#FAFAFA",
         },
-        primary: {
-          DEFAULT: "#243882",
-          "light-blue": "#D1E2F1",
-          black: "#1E1E1E",
-          white: "#FFFFFF",
-          foreground: "hsl(var(--primary-foreground) / <alpha-value>)",
-        },
-        secondary: {
-          DEFAULT: "#3F68FF",
-          orange: "#FF5731",
-          violet: "#9B76FF",
-          foreground: "hsl(var(--secondary-foreground) / <alpha-value>)",
-        },
-        destructive: {
-          DEFAULT: "#EC2D30",
+        danger: {
+          700: "#EC2D30",
           600: "#F64C4C",
           500: "#EB6F70",
           400: "#F49898",
           300: "#FFCCD2",
           200: "#FFEBEE",
           100: "#FEF2F2",
-          foreground: "hsl(var(--destructive-foreground) / <alpha-value>)",
         },
         warning: {
-          DEFAULT: "#FE9B0E",
+          700: "#FE9B0E",
           600: "#FFAD0D",
           500: "#FFC62B",
           400: "#FFDD82",
           300: "#FFEAB3",
           200: "#FFF7E1",
           100: "#FFF9EE",
-          foreground: "hsl(var(--destructive-foreground) / <alpha-value>)",
         },
         success: {
-          DEFAULT: "#0D8553",
+          700: "#0D8553",
           600: "#32A978",
           500: "#6BC497",
           400: "#97D4B4",
           300: "#C0E5D1",
           200: "#E5F5EC",
           100: "#F2FAF6",
-          foreground: "hsl(var(--destructive-foreground) / <alpha-value>)",
         },
-        muted: {
-          DEFAULT: "hsl(var(--muted) / <alpha-value>)",
-          foreground: "hsl(var(--muted-foreground) / <alpha-value>)",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent) / <alpha-value>)",
-          foreground: "hsl(var(--accent-foreground) / <alpha-value>)",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover) / <alpha-value>)",
-          foreground: "hsl(var(--popover-foreground) / <alpha-value>)",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card) / <alpha-value>)",
-          foreground: "hsl(var(--card-foreground) / <alpha-value>)",
-        },
+        foreground: "#FFFF",
+        border: "hsl(var(--border) / <alpha-value>)", //? DA RICONTROLLARE
+        input: "hsl(var(--input) / <alpha-value>)", //? DA RICONTROLLARE
+        ring: "hsl(var(--ring) / <alpha-value>)", //? DA RICONTROLLARE
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        lg: "var(--radius)", //? DA RICONTROLLARE
+        md: "calc(var(--radius) - 2px)", //? DA RICONTROLLARE
+        sm: "calc(var(--radius) - 4px)", //? DA RICONTROLLARE
       },
       fontFamily: {
-        sans: [...fontFamily.sans],
+        regular: ["Chillax-Regular", "sans-serif"],
+        medium: ["Chillax-Medium", "sans-serif"],
+        semibold: ["Chillax-Semibold", "sans-serif"],
+        bold: ["Chillax-Bold", "sans-serif"],
       },
       fontSize: {
-        md: "18px",
-        sm: "16px",
-        xs: "14px",
+        xxs: "10px",
+        xs: "12px",
+        sm: "14px",
+        md: "16px",
+        lg: "18px",
       },
     },
   },
+  plugins: [
+    function ({ addUtilities, theme }) {
+      const newUtilities = {};
+      const sizes = ["xxs", "xs", "sm", "md", "xl"]; // Definisci le taglie
+      const weights = ["regular", "medium", "semibold", "bold"]; // Definisci i pesi
+
+      weights.forEach((weight) => {
+        sizes.forEach((size) => {
+          newUtilities[`.${weight}-${size}`] = {
+            fontFamily: theme(`fontFamily.${weight}`),
+            fontSize: theme(`fontSize.${size}`),
+          };
+        });
+      });
+
+      addUtilities(newUtilities);
+    },
+  ],
 };
 
 export default config;
