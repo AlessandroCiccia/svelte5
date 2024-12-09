@@ -28,24 +28,6 @@ export interface PDP {
     };
   };
 
-  /** Sezione per i vantaggi esclusivi online (es. "Exclusive web offer") */
-  excluWeb: {
-    /** Titolo della sezione esclusiva */
-    title: string;
-
-    /** Descrizione della sezione */
-    description: string;
-
-    /** Elenco di voci con titoli e descrizioni */
-    subItems: {
-      /** Titolo della voce */
-      title: string;
-
-      /** Descrizione della voce */
-      description: string;
-    }[];
-  };
-
   /** Sezione per il trade-in, dove gli utenti possono valutare il loro veicolo usato */
   traidInSection: {
     /** Titolo della sezione trade-in (es. "Trade-in") */
@@ -63,4 +45,26 @@ export interface PDP {
     /** Titolo della sezione veicoli correlati */
     title: string;
   };
+}
+export interface UsedPDP extends PDP {
+  /** Sezione per i vantaggi esclusivi online (es. "Exclusive web offer") */
+  excluWeb: {
+    /** Titolo della sezione esclusiva */
+    title: string;
+
+    /** Descrizione della sezione */
+    description: string;
+
+    /** Elenco di voci con titoli e descrizioni */
+    subItems: {
+      /** Titolo della voce */
+      title: string;
+
+      /** Descrizione della voce */
+      description: string;
+    }[];
+  };
+}
+
+export interface NewPDP extends PDP {
 }

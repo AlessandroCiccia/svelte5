@@ -1,6 +1,6 @@
-import type { PDP } from "$lib/models/pages/pdp";
+import type { UsedPDP } from "$lib/models/pages/pdp";
 
-export const PDPmock: PDP = {
+export const PDPmock: UsedPDP = {
     header: {
         breadcrumbs: [
             { label: "Home", path: "/home", parentId: "0", id: "1" },
