@@ -5,7 +5,6 @@
   import Textareas from "$lib/components/Textareas.svelte";
   import { Button } from "$lib/components/ui/button";
   import "./app.css";
-  import PreFooter from "./lib/components/PreFooter.svelte";
   import { Skull } from "lucide-svelte";
 </script>
 
